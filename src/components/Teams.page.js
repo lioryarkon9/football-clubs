@@ -22,10 +22,10 @@ const Teams = ({ teams }) => {
           {teams.map((team) => (
             <Team to={`/team/${team.id}`} key={team.name}>
               <Name>{team.name}</Name>
-              <Stadium>{`${team.grounds[0].name}, ${team.grounds[0].city}`}</Stadium>
+              <Stadium>{team.stadium}</Stadium>
               <Capacity>
-                {team.grounds[0].capacity &&
-                  team.grounds[0].capacity.toLocaleString()}
+                {team.capacity &&
+                  team.capacity.toLocaleString()}
               </Capacity>
             </Team>
           ))}

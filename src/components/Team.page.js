@@ -12,7 +12,7 @@ const Team = ({ currentTeam }) => {
         <PageTitle>
           <span>{currentTeam.name}</span>{" "}
           <img
-            src={`https://resources.premierleague.com/premierleague/badges/70/${currentTeam.altIds.opta}.png`}
+            src={`https://resources.premierleague.com/premierleague/badges/70/${currentTeam.logoId}.png`}
           />
         </PageTitle>
 
@@ -20,21 +20,21 @@ const Team = ({ currentTeam }) => {
           <ClubDetail>
             <Label>Stadium</Label>
             <div>
-              {currentTeam.grounds[0].name}, {currentTeam.grounds[0].city}
+              {currentTeam.stadium}
             </div>
           </ClubDetail>
 
           <ClubDetail>
             <Label>Capacity</Label>
             <div>
-              {currentTeam.grounds[0].capacity &&
-                currentTeam.grounds[0].capacity.toLocaleString()}
+              {currentTeam.capacity &&
+                currentTeam.capacity.toLocaleString()}
             </div>
           </ClubDetail>
 
           <ClubDetail>
             <Label>Website</Label>
-            <a target="_blank" href={currentTeam.metadata.communities_URL}>
+            <a target="_blank" href={currentTeam.websiteUrl}>
               {currentTeam.name} official website
             </a>
           </ClubDetail>
