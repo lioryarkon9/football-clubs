@@ -4,6 +4,8 @@ import {Link} from "react-router-dom";
 
 import theme from "../theme";
 
+import {MaxWidthContainer, PageContainer, PageTitle} from "./commonStyled";
+
 const Teams = ({teams}) => {
   return (
     <MaxWidthContainer>
@@ -79,22 +81,6 @@ const DesktopTableHeader = styled.div`
 
   display: flex;
   padding-bottom: 5px;
-`;
-
-const PageTitle = styled.h2`
-  text-align: center;
-`;
-
-const PageContainer = styled.div`
-  flex-grow: 1;
-  padding: 5px;
-  max-width: 1700px;
-  color: #172b4d;
-`;
-
-const MaxWidthContainer = styled.div`
-  display: flex;
-  justify-content: center;
 `;
 
 export default Teams;
