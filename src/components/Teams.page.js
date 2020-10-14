@@ -97,24 +97,4 @@ const MaxWidthContainer = styled.div`
   justify-content: center;
 `;
 
-const formattedWithCommas = potentiallyLongNumber => {
-  const stringified = potentiallyLongNumber.toString();
-
-  if (stringified.length <= 3) {
-    return stringified;
-  } 
-
-  let result = "";
-
-  for (let i = stringified.length - 1; i > 0; i--) {
-    result += stringified[i];
-
-    if ((i + 1) % 3 === 0) {
-      result += ",";
-    }
-  }
-
-  return result;
-};
-
 export default Teams;
