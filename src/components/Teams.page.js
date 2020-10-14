@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import theme from "../theme";
 
-import {MaxWidthContainer, PageContainer, PageTitle} from "./commonStyled";
+import { MaxWidthContainer, PageContainer } from "./commonStyled";
 
-const Teams = ({teams}) => {
+const Teams = ({ teams }) => {
   return (
     <MaxWidthContainer>
       <PageContainer>
@@ -19,11 +19,14 @@ const Teams = ({teams}) => {
             <Capacity>Capacity</Capacity>
           </DesktopTableHeader>
 
-          {teams.map(team => (
+          {teams.map((team) => (
             <Team to={`/team/${team.id}`} key={team.name}>
               <Name>{team.name}</Name>
               <Stadium>{`${team.grounds[0].name}, ${team.grounds[0].city}`}</Stadium>
-              <Capacity>{team.grounds[0].capacity && team.grounds[0].capacity.toLocaleString()}</Capacity>
+              <Capacity>
+                {team.grounds[0].capacity &&
+                  team.grounds[0].capacity.toLocaleString()}
+              </Capacity>
             </Team>
           ))}
         </TeamsContainer>
@@ -31,6 +34,10 @@ const Teams = ({teams}) => {
     </MaxWidthContainer>
   );
 };
+
+const PageTitle = styled.h2`
+  text-align: center;
+`;
 
 const Team = styled(Link)`
   display: flex;
@@ -45,7 +52,7 @@ const Team = styled(Link)`
 `;
 
 const TeamsContainer = styled.div`
-  background-color: ${theme.colors.listBackground};
+  background-color: ${theme.colors.uiItemBackground};
   border-radius: ${theme.borderRadius};
   padding: 10px;
 `;

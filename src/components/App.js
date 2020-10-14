@@ -10,16 +10,28 @@ import players from "../premierLeaguePlayers.json";
 import teams from "../premierLeagueTeams.json";
 
 import Teams from "./Teams.page";
+import Team from "./Team.page";
 
-console.log("teams:", teams);
+const footballTeams = teams.reduce((teamsById, currentTeam) => {
+  teamsById[currentTeam.id] = { ...currentTeam };
+
+  return teamsById;
+}, {});
+
+console.log("teams:", footballTeams);
 console.log("players:", players);
 
 const App = () => (
   <Router>
     <Switch>
       <Route path="/" exact component={() => <Redirect to="/teams" />} />
-      <Route path="/teams" component={() => (<Teams teams={teams}/>)} />
-      <Route path="team/:id" component={() => <h2>team</h2>} />
+      <Route path="/teams" component={() => <Teams teams={teams} />} />
+      <Route
+        path="/team/:teamId"
+        component={({ match }) => (
+          <Team currentTeam={footballTeams[match.params.teamId]} />
+        )}
+      />
       <Route path="*" component={() => <h2>OOPS: Page Not Found:-(</h2>} />
     </Switch>
   </Router>
