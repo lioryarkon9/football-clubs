@@ -10,6 +10,8 @@ import {
   ListContainer,
 } from "./commonStyled";
 
+import ClubDetail from "./ClubDetail";
+
 const Team = ({ currentTeam, players }) => {
   return (
     <MaxWidthContainer>
@@ -23,28 +25,22 @@ const Team = ({ currentTeam, players }) => {
         </PageTitle>
 
         <ClubDetails>
-          <ClubDetail>
-            <Label>Stadium</Label>
-            <div>{currentTeam.stadium}</div>
-          </ClubDetail>
+          <ClubDetail label="Stadium" value={currentTeam.stadium} />
 
-          <ClubDetail>
-            <Label>Capacity</Label>
-            <div>
-              {currentTeam.capacity && currentTeam.capacity.toLocaleString()}
-            </div>
-          </ClubDetail>
+          <ClubDetail
+            label="Capacity"
+            value={
+              currentTeam.capacity && currentTeam.capacity.toLocaleString()
+            }
+          />
 
-          <ClubDetail>
-            <Label>Website</Label>
-            <a
-              rel="noopener noreferrer"
-              target="_blank"
-              href={currentTeam.websiteUrl}
-            >
-              {currentTeam.name} official website
-            </a>
-          </ClubDetail>
+          <ClubDetail
+            label="Website"
+            value={{
+              href: currentTeam.websiteUrl,
+              text: `${currentTeam.name} official website`,
+            }}
+          />
         </ClubDetails>
 
         <ListContainer>
@@ -86,24 +82,6 @@ const ShirtNumber = styled.div`
 
 const PlayerName = styled.div`
   width: 90%;
-`;
-
-const Label = styled.div`
-  font-weight: bold;
-  margin-bottom: 8px;
-`;
-
-const ClubDetail = styled.div`
-  background-color: ${theme.colors.uiItemBackground};
-  border-radius: ${theme.borderRadius};
-  width: 30%;
-  box-shadow: 0 0 2px 0;
-  padding: 10px;
-
-  @media only screen and (max-width: ${theme.maxWidthSmallScreen}) {
-    width: 100%;
-    margin-top: 10px;
-  }
 `;
 
 const ClubDetails = styled.div`
