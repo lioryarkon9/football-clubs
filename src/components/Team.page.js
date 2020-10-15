@@ -5,6 +5,8 @@ import theme from "../theme";
 
 import { MaxWidthContainer, PageContainer } from "./commonStyled";
 
+// https://resources.premierleague.com/premierleague/badges/70/${currentTeam.logoId}.png
+
 const Team = ({ currentTeam }) => {
   return (
     <MaxWidthContainer>
@@ -12,7 +14,8 @@ const Team = ({ currentTeam }) => {
         <PageTitle>
           <span>{currentTeam.name}</span>{" "}
           <img
-            src={`https://resources.premierleague.com/premierleague/badges/70/${currentTeam.logoId}.png`}
+            alt="team-logo"
+            src=""
           />
         </PageTitle>
 
@@ -34,7 +37,7 @@ const Team = ({ currentTeam }) => {
 
           <ClubDetail>
             <Label>Website</Label>
-            <a target="_blank" href={currentTeam.websiteUrl}>
+            <a rel="noopener noreferrer" target="_blank" href={currentTeam.websiteUrl}>
               {currentTeam.name} official website
             </a>
           </ClubDetail>

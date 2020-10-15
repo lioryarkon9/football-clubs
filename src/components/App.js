@@ -54,7 +54,6 @@ const footballPlayers = players.map((player) => ({
 }));
 
 console.log(JSON.stringify(footballTeams));
-//console.log("players:", JSON.stringify(footballPlayers));
 
 const App = () => (
   <Router>
