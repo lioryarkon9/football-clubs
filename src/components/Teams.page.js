@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import theme from "../theme";
 
-import { MaxWidthContainer, PageContainer } from "./commonStyled";
+import { MaxWidthContainer, PageContainer, DesktopTableHeader, ListContainer } from "./commonStyled";
 
 const Teams = ({ teams }) => {
   return (
@@ -12,7 +12,7 @@ const Teams = ({ teams }) => {
       <PageContainer>
         <PageTitle>Teams</PageTitle>
 
-        <TeamsContainer>
+        <ListContainer>
           <DesktopTableHeader>
             <Name>Name</Name>
             <Stadium>Stadium</Stadium>
@@ -29,7 +29,7 @@ const Teams = ({ teams }) => {
               </Capacity>
             </Team>
           ))}
-        </TeamsContainer>
+        </ListContainer>
       </PageContainer>
     </MaxWidthContainer>
   );
@@ -43,18 +43,12 @@ const Team = styled(Link)`
   display: flex;
   text-decoration: none;
   color: inherit;
-  border-top: 1px solid;
+  border-top: 1px solid ${theme.colors.listBorder};
   padding: 5px;
 
   @media only screen and (max-width: ${theme.maxWidthSmallScreen}) {
     font-size: 18px;
   }
-`;
-
-const TeamsContainer = styled.div`
-  background-color: ${theme.colors.uiItemBackground};
-  border-radius: ${theme.borderRadius};
-  padding: 10px;
 `;
 
 const Name = styled.div`
@@ -79,15 +73,6 @@ const Capacity = styled.div`
   @media only screen and (max-width: ${theme.maxWidthSmallScreen}) {
     display: none;
   }
-`;
-
-const DesktopTableHeader = styled.div`
-  @media only screen and (max-width: ${theme.maxWidthSmallScreen}) {
-    display: none;
-  }
-
-  display: flex;
-  padding-bottom: 5px;
 `;
 
 export default Teams;

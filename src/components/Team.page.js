@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 import theme from "../theme";
 
-import { MaxWidthContainer, PageContainer } from "./commonStyled";
+import { MaxWidthContainer, PageContainer, DesktopTableHeader, ListContainer } from "./commonStyled";
 
 // https://resources.premierleague.com/premierleague/badges/70/${currentTeam.logoId}.png
 
-const Team = ({ currentTeam }) => {
+const Team = ({ currentTeam, players }) => {
   return (
     <MaxWidthContainer>
       <PageContainer>
@@ -42,10 +42,38 @@ const Team = ({ currentTeam }) => {
             </a>
           </ClubDetail>
         </ClubDetails>
+
+        <ListContainer>
+          <DesktopTableHeader>
+            <ShirtNumber>No.</ShirtNumber>
+            <PlayerName>Name</PlayerName>
+          </DesktopTableHeader>
+
+          {players.map(player => (
+            <Player>
+              <ShirtNumber>{player.shirtNumber}</ShirtNumber>
+              <PlayerName>{player.name}</PlayerName>
+            </Player>
+          ))}
+        </ListContainer>
       </PageContainer>
     </MaxWidthContainer>
   );
 };
+
+const Player = styled.div`
+  display: flex;
+  border-top: 1px solid ${theme.colors.listBorder};
+  padding: 5px;
+`;
+
+const ShirtNumber = styled.div`
+  width: 10%;
+`;
+
+const PlayerName = styled.div`
+  width: 90%;
+`;
 
 const Label = styled.div`
   font-weight: bold;
@@ -68,6 +96,7 @@ const ClubDetail = styled.div`
 const ClubDetails = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 
   @media only screen and (max-width: ${theme.maxWidthSmallScreen}) {
     flex-wrap: wrap;
