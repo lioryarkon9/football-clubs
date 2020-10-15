@@ -10,7 +10,7 @@ const ClubDetail = ({ label, value }) => {
     <Container>
       <Label>{label}</Label>
       {href ? (
-        <a rel="no referrer" target="_blank" href={href}>
+        <a rel="noopener noreferrer" target="_blank" href={href}>
           {text}
         </a>
       ) : (
