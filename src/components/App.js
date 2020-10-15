@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -13,17 +13,21 @@ const App = () => {
   const [teams, setTeams] = useState();
   const [players, setPlayers] = useState();
 
-  useEffect(function fetchTeamsAndPlayer () {
+  useEffect(function fetchTeamsAndPlayer() {
     (async () => {
-      const teamsRequest = await fetch("https://run.mocky.io/v3/884773b8-6c42-4c82-b1fe-3684f01baa65");
+      const teamsRequest = await fetch(
+        "https://run.mocky.io/v3/884773b8-6c42-4c82-b1fe-3684f01baa65"
+      );
       const teamsResponse = await teamsRequest.json();
 
-      const playersRequest = await fetch("https://run.mocky.io/v3/05000676-0702-4eb8-b656-80b1582ca2a1");
+      const playersRequest = await fetch(
+        "https://run.mocky.io/v3/05000676-0702-4eb8-b656-80b1582ca2a1"
+      );
       const playersReponse = await playersRequest.json();
 
       setTeams(teamsResponse);
       setPlayers(playersReponse);
-    })() 
+    })();
   }, []);
 
   if (!teams || !players) {
@@ -53,6 +57,6 @@ const App = () => {
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;
