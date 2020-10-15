@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 
 import theme from "../theme";
 
-import { MaxWidthContainer, PageContainer, DesktopTableHeader, ListContainer } from "./commonStyled";
+import {
+  MaxWidthContainer,
+  PageContainer,
+  DesktopTableHeader,
+  ListContainer,
+} from "./commonStyled";
 
 const Teams = ({ teams }) => {
   return (
@@ -24,8 +29,7 @@ const Teams = ({ teams }) => {
               <Name>{team.name}</Name>
               <Stadium>{team.stadium}</Stadium>
               <Capacity>
-                {team.capacity &&
-                  team.capacity.toLocaleString()}
+                {team.capacity && team.capacity.toLocaleString()}
               </Capacity>
             </Team>
           ))}

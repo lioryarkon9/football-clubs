@@ -20,7 +20,7 @@ import fulhamStaff from "../staffs/fulham.json";
 import Teams from "./Teams.page";
 import Team from "./Team.page";
 
-const appTeamsIds = [1, 2, 131, 43, 4, 6, 7, 34]
+const appTeamsIds = [1, 2, 131, 43, 4, 6, 7, 34];
 
 const footballTeams = teams.reduce((teamsById, currentTeam) => {
   if (appTeamsIds.includes(currentTeam.id)) {
@@ -37,15 +37,39 @@ const footballTeams = teams.reduce((teamsById, currentTeam) => {
 }, {});
 
 const players = [
-  ...arsenalStaff.players.map(player => ({...player, teamId: arsenalStaff.team.id})),
-  ...astonVillaStaff.players.map(player => ({...player, teamId: astonVillaStaff.team.id})),
-  ...brightonStaff.players.map(player => ({...player, teamId: brightonStaff.team.id})),
-  ...burnleyStaff.players.map(player => ({...player, teamId: burnleyStaff.team.id})),
-  ...chelseaStaff.players.map(player => ({...player, teamId: chelseaStaff.team.id})),
-  ...crystalPalaceStaff.players.map(player => ({...player, teamId: crystalPalaceStaff.team.id})),
-  ...evertonStaff.players.map(player => ({...player, teamId: evertonStaff.team.id})),
-  ...fulhamStaff.players.map(player => ({...player, teamId: fulhamStaff.team.id}))
-]
+  ...arsenalStaff.players.map((player) => ({
+    ...player,
+    teamId: arsenalStaff.team.id,
+  })),
+  ...astonVillaStaff.players.map((player) => ({
+    ...player,
+    teamId: astonVillaStaff.team.id,
+  })),
+  ...brightonStaff.players.map((player) => ({
+    ...player,
+    teamId: brightonStaff.team.id,
+  })),
+  ...burnleyStaff.players.map((player) => ({
+    ...player,
+    teamId: burnleyStaff.team.id,
+  })),
+  ...chelseaStaff.players.map((player) => ({
+    ...player,
+    teamId: chelseaStaff.team.id,
+  })),
+  ...crystalPalaceStaff.players.map((player) => ({
+    ...player,
+    teamId: crystalPalaceStaff.team.id,
+  })),
+  ...evertonStaff.players.map((player) => ({
+    ...player,
+    teamId: evertonStaff.team.id,
+  })),
+  ...fulhamStaff.players.map((player) => ({
+    ...player,
+    teamId: fulhamStaff.team.id,
+  })),
+];
 
 const footballPlayers = players.map((player) => ({
   shirtNumber: player.info.shirtNum,

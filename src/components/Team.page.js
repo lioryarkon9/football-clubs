@@ -3,41 +3,45 @@ import styled from "styled-components";
 
 import theme from "../theme";
 
-import { MaxWidthContainer, PageContainer, DesktopTableHeader, ListContainer } from "./commonStyled";
-
-// https://resources.premierleague.com/premierleague/badges/70/${currentTeam.logoId}.png
+import {
+  MaxWidthContainer,
+  PageContainer,
+  DesktopTableHeader,
+  ListContainer,
+} from "./commonStyled";
 
 const Team = ({ currentTeam, players }) => {
   return (
     <MaxWidthContainer>
       <PageContainer>
         <PageTitle>
-          <span>{currentTeam.name}</span>{" "}
-          <img
+          <div>{currentTeam.name}</div>
+          <TeamLogo
             alt="team-logo"
-            src=""
+            src={`https://resources.premierleague.com/premierleague/badges/70/${currentTeam.logoId}.png`}
           />
         </PageTitle>
 
         <ClubDetails>
           <ClubDetail>
             <Label>Stadium</Label>
-            <div>
-              {currentTeam.stadium}
-            </div>
+            <div>{currentTeam.stadium}</div>
           </ClubDetail>
 
           <ClubDetail>
             <Label>Capacity</Label>
             <div>
-              {currentTeam.capacity &&
-                currentTeam.capacity.toLocaleString()}
+              {currentTeam.capacity && currentTeam.capacity.toLocaleString()}
             </div>
           </ClubDetail>
 
           <ClubDetail>
             <Label>Website</Label>
-            <a rel="noopener noreferrer" target="_blank" href={currentTeam.websiteUrl}>
+            <a
+              rel="noopener noreferrer"
+              target="_blank"
+              href={currentTeam.websiteUrl}
+            >
               {currentTeam.name} official website
             </a>
           </ClubDetail>
@@ -49,7 +53,7 @@ const Team = ({ currentTeam, players }) => {
             <PlayerName>Name</PlayerName>
           </DesktopTableHeader>
 
-          {players.map(player => (
+          {players.map((player) => (
             <Player>
               <ShirtNumber>{player.shirtNumber}</ShirtNumber>
               <PlayerName>{player.name}</PlayerName>
@@ -60,6 +64,15 @@ const Team = ({ currentTeam, players }) => {
     </MaxWidthContainer>
   );
 };
+
+const TeamLogo = styled.img`
+  position: absolute;
+  right: 0;
+
+  @media only screen and (max-width: ${theme.maxWidthSmallScreen}) {
+    position: static;
+  }
+`;
 
 const Player = styled.div`
   display: flex;
@@ -103,10 +116,18 @@ const ClubDetails = styled.div`
   }
 `;
 
-const PageTitle = styled.h3`
+const PageTitle = styled.div`
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 90px;
+  font-size: 22px;
+  font-weight: bold;
+
+  @media only screen and (max-width: ${theme.maxWidthSmallScreen}) {
+    justify-content: space-between;
+  }
 `;
 
 export default Team;
